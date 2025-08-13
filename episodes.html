@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Episodios</title>
+        <link rel="stylesheet" href="clase2.css">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <nav class="navbar">
+            <a href="clase2.html">
+                <img class="logo" src="imgs/logo.png" alt="logo">
+            </a>
+
+            <div class="links">
+                <a href="about.html" class="navbar-link">About</a>
+                <a href="episodes.html" class="navbar-link">Episodios</a>
+            </div>
+        </nav>
+
+        <main>
+            <div class="seasons">
+                <button onclick="setCurrentSeason(1)">S1</button>
+                <button onclick="setCurrentSeason(2)">S2</button>
+                <button onclick="setCurrentSeason(3)">S3</button>
+                <button onclick="setCurrentSeason(4)">S4</button>
+            </div>
+
+            <div class="episodes" id="episodes">
+            </div>
+        </main>
+    </body>
+</html>
+
+<script>
+    const strangerThingsSeasons = {
+        1: {
+            season: 1,
+            episodes: [
+                {
+                    "episode": 1,
+                    "title": "Chapter One: The Vanishing of Will Byers",
+                    "description": "In 1983 Indiana, a young boy named Will Byers vanishes mysteriously. His friends, family, and local police begin a desperate search, uncovering a series of supernatural and government-related secrets."
+                },
+                {
+                    "episode": 2,
+                    "title": "Chapter Two: The Weirdo on Maple Street",
+                    "description": "While searching for Will, Mike, Dustin, and Lucas find a strange girl with a shaved head and a mysterious past. They take her in and discover she has powerful telekinetic abilities. Meanwhile, Will's mother, Joyce, believes she can communicate with her son."
+                },
+                {
+                    "episode": 3,
+                    "title": "Chapter Three: Holly, Jolly",
+                    "description": "Joyce hangs Christmas lights and uses them to communicate with Will, believing he is trapped in another dimension. The boys name the girl 'Eleven' and discover she escaped from a government lab. The search for Will intensifies as clues point to a menacing creature."
+                },
+                {
+                    "episode": 4,
+                    "title": "Chapter Four: The Body",
+                    "description": "A body is found in the quarry, believed to be Will's, but his friends and Joyce refuse to believe it. Eleven shows them a picture of Will in a strange, dark place. Hopper investigates the government lab and finds a shocking secret."
+                },
+                {
+                    "episode": 5,
+                    "title": "Chapter Five: The Flea and the Acrobat",
+                    "description": "The boys try to contact Will in the other dimension using their science teacher's knowledge. Nancy and Jonathan team up to hunt the creature that took Will. Eleven's connection to the lab is revealed, and the danger escalates."
+                },
+                {
+                    "episode": 6,
+                    "title": "Chapter Six: The Monster",
+                    "description": "Hopper and Joyce enter the alternate dimension to rescue Will, confronting the horrifying monster. The boys and Eleven use a sensory deprivation tank to find Will. Nancy and Jonathan set a trap for the creature."
+                },
+                {
+                    "episode": 7,
+                    "title": "Chapter Seven: The Bathtub",
+                    "description": "Eleven goes into the sensory deprivation tank to find Will, leading to a shocking discovery. The government closes in on the group. Nancy and Jonathan's plan to kill the monster goes awry, and they find themselves in grave danger."
+                },
+                {
+                    "episode": 8,
+                    "title": "Chapter Eight: The Upside Down",
+                    "description": "The group prepares for a final confrontation with the monster. Eleven uses her powers to save her friends, leading to a dramatic showdown. Will is rescued, but the season ends with a chilling hint of the supernatural's lasting impact."
+                }
+            ]
+        },
+        2: {
+            season: 2,
+            episodes: [
+                {
+                    "episode": 1,
+                    "title": "Chapter One: MADMAX",
+                    "description": "A year after Will's return, the residents of Hawkins are trying to move on. A new girl named Max arrives and catches the attention of Lucas and Dustin. Will begins to have disturbing visions of the Upside Down."
+                },
+                {
+                    "episode": 2,
+                    "title": "Chapter Two: Trick or Treat, Freak",
+                    "description": "The gang goes trick-or-treating for Halloween. Will's visions become more intense and terrifying. A new mystery begins when Hopper investigates strange happenings at a pumpkin patch, and Eleven makes a startling discovery about her past."
+                },
+                {
+                    "episode": 3,
+                    "title": "Chapter Three: The Pollywog",
+                    "description": "Dustin finds a mysterious creature in his trash can and names it D'Artagnan. Will's visions grow more dangerous, and he confesses them to Mike. Hopper gets closer to the truth about the Hawkins lab."
+                },
+                {
+                    "episode": 4,
+                    "title": "Chapter Four: Will the Wise",
+                    "description": "Will's connection to the Mind Flayer strengthens, and he becomes a vessel for the entity. Joyce takes him to the lab for help, where they realize he is under the creature's control. Hopper is trapped in the Upside Down."
+                },
+                {
+                    "episode": 5,
+                    "title": "Chapter Five: Dig Dug",
+                    "description": "Hopper is rescued from the Upside Down, but the tunnels are a dangerous threat. The boys and Steve team up to protect Dustin's new 'pet' and uncover the truth about its connection to the Upside Down."
+                },
+                {
+                    "episode": 6,
+                    "title": "Chapter Six: The Spy",
+                    "description": "Will is used as a spy by the Mind Flayer, leading the creature to its next target. The group discovers the creature is a hive mind, and its goal is to take over the world. Hopper and Joyce make a desperate attempt to help Will."
+                },
+                {
+                    "episode": 7,
+                    "title": "Chapter Seven: The Lost Sister",
+                    "description": "Eleven leaves Hawkins and seeks out her 'sister,' Kali, a fellow test subject from the lab with a different superpower. She learns more about her past and the Hawkins lab's experiments."
+                },
+                {
+                    "episode": 8,
+                    "title": "Chapter Eight: The Mind Flayer",
+                    "description": "The Mind Flayer's army of Demodogs attacks Hawkins lab. The group must work together to close the gate to the Upside Down before the Mind Flayer can take over. Eleven returns to help her friends and faces a new challenge."
+                },
+                {
+                    "episode": 9,
+                    "title": "Chapter Nine: The Gate",
+                    "description": "The group's final plan to close the gate goes into action. Eleven uses her powers to close the gate, but the Mind Flayer is not defeated. The season ends with a chilling shot of the Mind Flayer over the school dance, hinting at future danger."
+                }
+            ]
+        },
+        3: {
+            season: 3,
+            episodes: [
+                {
+                    "episode": 1,
+                    "title": "Chapter One: Suzie, Do You Copy?",
+                    "description": "The summer of 1985 brings new loves and challenges to the residents of Hawkins. A new mall is built, and a secret Soviet facility is discovered beneath it. The Mind Flayer returns, and a series of strange events begins."
+                },
+                {
+                    "episode": 2,
+                    "title": "Chapter Two: The Mall Rats",
+                    "description": "The group is divided: Mike, Lucas, and Max at the mall, Dustin and Steve investigating the Russian code, and Nancy and Jonathan investigating a strange incident. Eleven and Hopper deal with their own relationship issues."
+                },
+                {
+                    "episode": 3,
+                    "title": "Chapter Three: The Case of the Missing Lifeguard",
+                    "description": "The group's investigations lead them to the Starcourt Mall, where they uncover a conspiracy. The Mind Flayer begins to possess residents of Hawkins, starting with Billy Hargrove."
+                },
+                {
+                    "episode": 4,
+                    "title": "Chapter Four: The Sauna Test",
+                    "description": "The group attempts to 'sauna test' Billy to see if he is possessed by the Mind Flayer. The test proves successful, but a dangerous confrontation ensues."
+                },
+                {
+                    "episode": 5,
+                    "title": "Chapter Five: The Flayed",
+                    "description": "The Mind Flayer's army of the 'Flayed' grows stronger, and they begin to attack Hawkins. Hopper and Joyce's investigation leads them to a secret Russian base."
+                },
+                {
+                    "episode": 6,
+                    "title": "Chapter Six: E Pluribus Unum",
+                    "description": "Eleven confronts the Mind Flayer and learns its true intentions. Hopper and Joyce, along with Murray, attempt to shut down the Russian base."
+                },
+                {
+                    "episode": 7,
+                    "title": "Chapter Seven: The Bite",
+                    "description": "The Mind Flayer's attack on the group leaves Eleven severely wounded. The group must race against time to stop the Mind Flayer from destroying Hawkins."
+                },
+                {
+                    "episode": 8,
+                    "title": "Chapter Eight: The Battle of Starcourt",
+                    "description": "The group, divided into three teams, launches a final attack on the Mind Flayer and the Russian base. Hopper makes the ultimate sacrifice to save Hawkins, but the season ends with a chilling hint of his survival."
+                }
+            ]
+        },
+        4: {
+            season: 4,
+            episodes: [
+                {
+                    "episode": 1,
+                    "title": "Chapter One: The Hellfire Club",
+                    "description": "Six months after the Battle of Starcourt, the group is separated. Eleven is in California, and the others are still in Hawkins. A new D&D club and a new supernatural threat, Vecna, emerge."
+                },
+                {
+                    "episode": 2,
+                    "title": "Chapter Two: Vecna's Curse",
+                    "description": "Vecna's curse begins to terrorize the residents of Hawkins. The group investigates the murders and discovers a connection to the Upside Down. Eleven struggles with her powers and her new life in California."
+                },
+                {
+                    "episode": 3,
+                    "title": "Chapter Three: The Monster and the Superhero",
+                    "description": "Eleven is taken to a secret facility to regain her powers, but she is reluctant to go. In Hawkins, the group tries to help Max, who is the next target of Vecna."
+                },
+                {
+                    "episode": 4,
+                    "title": "Chapter Four: Dear Billy",
+                    "description": "Max confronts Vecna in the Upside Down, and the group tries to save her from his curse. Eleven's memories of the past begin to return, revealing a shocking truth about her origins."
+                },
+                {
+                    "episode": 5,
+                    "title": "Chapter Five: The Nina Project",
+                    "description": "Eleven enters the 'Nina Project,' a sensory deprivation tank, to relive her past and regain her powers. Hopper and Joyce are on a mission to escape a Russian prison."
+                },
+                {
+                    "episode": 6,
+                    "title": "Chapter Six: The Dive",
+                    "description": "The Hawkins group enters the Upside Down to gather evidence and learn more about Vecna. Their journey is fraught with danger and they discover more about the dark dimension. Eleven's memories reveal a connection between Vecna and her past."
+                },
+                {
+                    "episode": 7,
+                    "title": "Chapter Seven: The Massacre at Hawkins Lab",
+                    "description": "Eleven's memories are fully restored, revealing the truth about her past and the events of the Hawkins lab massacre. The shocking identity of Vecna is revealed, and the true threat is realized."
+                },
+                {
+                    "episode": 8,
+                    "title": "Chapter Eight: Papa",
+                    "description": "Eleven confronts the truth about Vecna and her past. The group in Hawkins prepares for a final battle. Hopper and Joyce finally escape the Russian prison."
+                },
+                {
+                    "episode": 9,
+                    "title": "Chapter Nine: The Piggyback",
+                    "description": "The Hawkins group, along with Eleven, work together to stop Vecna. The plan is to create a diversion in the Upside Down to allow Eleven to attack Vecna. The season ends with a cliffhanger, hinting at the start of a new, much bigger war."
+                }
+            ]
+        }
+    }
+
+    let currentSeason = 1
+
+    const setCurrentSeason = (season) => {
+        currentSeason = season
+
+        let episodeContainer = document.getElementById('episodes')
+        episodeContainer.innerHTML = ''
+
+        strangerThingsSeasons[currentSeason].episodes.forEach((episode) => {
+            const episodeItem = document.createElement('li')
+        })
+    }
+</script>
