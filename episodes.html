@@ -16,6 +16,7 @@
             <div class="links">
                 <a href="https://es.wikipedia.org/wiki/Stranger_Things" target="_blank" class="navbar-link">About</a>
                 <a href="episodes.html" class="navbar-link">Episodios</a>
+                <a href="characters.html" class="navbar-link">Personajes</a>
             </div>
         </nav>
 
@@ -232,11 +233,44 @@
     const setCurrentSeason = (season) => {
         currentSeason = season
 
+        // Remove active class from all season buttons
+        const seasonButtons = document.querySelectorAll('.seasons button')
+        seasonButtons.forEach(button => {
+            button.classList.remove('active')
+        })
+        
+        // Add active class to the selected season button
+        seasonButtons[season-1].classList.add('active')
+
         let episodeContainer = document.getElementById('episodes')
         episodeContainer.innerHTML = ''
+        
+        // Add season title
+        const seasonTitle = document.createElement('h2')
+        seasonTitle.textContent = `Season ${currentSeason}`
+        seasonTitle.className = 'season-title'
+        episodeContainer.appendChild(seasonTitle)
 
         strangerThingsSeasons[currentSeason].episodes.forEach((episode) => {
-            const episodeItem = document.createElement('li')
+            const episodeItem = document.createElement('div')
+            episodeItem.className = 'episode'
+            
+            const episodeTitle = document.createElement('h3')
+            episodeTitle.textContent = `${episode.title}`
+            episodeTitle.className = 'episode-title'
+            
+            const episodeDesc = document.createElement('p')
+            episodeDesc.textContent = episode.description
+            episodeDesc.className = 'episode-description'
+            
+            episodeItem.appendChild(episodeTitle)
+            episodeItem.appendChild(episodeDesc)
+            episodeContainer.appendChild(episodeItem)
         })
+    }
+    
+    // Load Season 1 episodes by default when page loads
+    window.onload = () => {
+        setCurrentSeason(1)
     }
 </script>
