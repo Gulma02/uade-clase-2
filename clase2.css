@@ -8,16 +8,24 @@ body {
 }
 
 .navbar {
-    padding: 0 10%;
+    padding: 0 5%;
     height: 15dvh;
     opacity: 80%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .navbar a {
     height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.links {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .links a {
@@ -27,7 +35,8 @@ body {
     font-size: 1.5em;
     transition: transform 0.1s ease-in-out;
     display: inline-block;
-    margin-right: 2em
+    margin-right: 1em;
+    margin-bottom: 0.5em;
 }
 
 .links a:hover {
@@ -46,21 +55,26 @@ a .logo {
 
 .main-banner {
     width: 100%;
-    height: 85dvh;
+    height: auto;
+    max-height: 85dvh;
     object-fit: cover;
 }
 
 main {
-    margin: 5dvh 10%;
+    margin: 5dvh 5%;
+    width: 90%;
 }
 
 .seasons {
     display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
 }
 
 .seasons button {
     all: unset;
     margin-right: 1rem;
+    margin-bottom: 0.5rem;
     color: rgba(255, 21, 21);
     border: red solid 1px;
     padding: 0.5rem;
@@ -110,7 +124,8 @@ main {
 }
 
 .characters-container {
-    margin: 5dvh 10%;
+    margin: 5dvh 5%;
+    width: 90%;
 }
 
 .characters-title {
@@ -123,7 +138,7 @@ main {
 
 .character-list {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 20px;
 }
 
@@ -133,11 +148,12 @@ main {
     width: 100%;
     transition: transform 0.1s ease-in-out;
     display: flex;
+    flex-wrap: wrap;
     overflow: hidden;
 }
 
 .character-card:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
     background-color: rgba(255, 21, 21, 0.1);
 }
 
@@ -155,13 +171,78 @@ main {
 }
 
 .character-content {
-    width: 60%;
-    padding: 30px 0;
+    flex: 1;
+    min-width: 250px;
+    padding: 20px;
 }
 
 .character-img {
-    width: 20%;
-    height: auto;
-    margin-right: 2dvw;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
+    margin: 10px;
+}
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 0 3%;
+        height: auto;
+        min-height: 10dvh;
+    }
+    
+    .links a {
+        font-size: 1.2em;
+        margin-right: 0.7em;
+    }
+    
+    .logo {
+        max-height: 10dvh;
+    }
+    
+    .character-content {
+        min-width: 200px;
+    }
+    
+    .episode-title {
+        font-size: 1.1em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .navbar {
+        flex-direction: column;
+        padding: 10px 3%;
+        justify-content: center;
+    }
+    
+    .links {
+        margin-top: 10px;
+        justify-content: center;
+    }
+    
+    .links a {
+        font-size: 1em;
+        margin: 0 0.5em 0.5em 0.5em;
+    }
+    
+    .character-img {
+        width: 100%;
+        height: auto;
+        margin: 0;
+    }
+    
+    .character-content {
+        padding: 15px;
+    }
+    
+    .character-name {
+        font-size: 1em;
+    }
+    
+    .seasons button {
+        margin-right: 0.5rem;
+        padding: 0.3rem;
+        font-size: 0.9em;
+    }
 }
